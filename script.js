@@ -29,7 +29,23 @@ let acceptData = () =>{
 }
 
 let createPost = () =>{
-    posts.innerHTML += `<div>${data.text}</div>`
+    posts.innerHTML += `<div>
+    <p>${data.text}</p>
+    <span class="options">
+        <i class="fa-solid fa-user-pen" onClick="editPost(this)"></i>
+        <i class="fa-solid fa-eraser" onClick="deletePost(this)"></i>
+    </span>
+</div>`
+
+    input.value = ""
 }
 
-//38.59
+let deletePost = (e) =>{
+    e.parentElement.parentElement.remove()
+}
+
+let editPost = (e) =>{
+   input.value = e.parentElement.previousElementSibling.innerHTML 
+   e.parentElement.parentElement.remove()
+}
+
